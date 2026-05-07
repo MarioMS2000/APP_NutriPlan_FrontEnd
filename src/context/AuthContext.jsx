@@ -22,9 +22,11 @@ export const AuthProvider = ({ children }) => {
                 setUser(data.user); // Guardo el usuario en el contexto global. Así ProfilePage puede mostrarlo aunque recargues la página
 
             } catch (error) {
-                
+                // Si falla -> el token expiró o el token es inválido o el usuario ya no existe o backend no responde
+                logout();// Cierro sesión
             }
         };
+        loadUser();
     },[token]);
 
     const login = ({ user, token }) => {
