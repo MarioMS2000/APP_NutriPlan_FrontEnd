@@ -91,4 +91,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage; // Exportas para usar en App.js
+export default RegisterPage; // Exportas para usar en App.jsx
