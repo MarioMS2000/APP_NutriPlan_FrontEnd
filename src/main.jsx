@@ -2,6 +2,7 @@ import { StrictMode } from "react"; // Detectar posibles problemas durante desar
 import { createRoot } from "react-dom/client"; // Conecta React con el DOM real del navegador
 import { BrowserRouter } from "react-router-dom"; // Permite usar rutas en React (/login...)
 import App from "./App.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import "./index.css";
 
 
@@ -9,11 +10,14 @@ import "./index.css";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>
 );
 
 // <StrictMode> -> Envuelve la app en modo estricto
 // <BrowserRouter> -> puedes navegar entre páginas sin recargar toda la web
+// <AuthProvider> -> Envuelve la app y comparte globalmente el estado de autenticación (user, token, login, logout...)
 // <App /> -> Renderiza tu componente principal

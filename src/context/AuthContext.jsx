@@ -1,10 +1,8 @@
-// Contexto global de autenticación
-import { createContext, useContext, useState } from "react"; // createContext → crea un contexto global, useContext → permite leer ese contexto, useState → guarda estados como user y token
-
-const AuthContext = createContext(); // Donde guardar datos del login
+// Mete datos dentro del contexto
+import { useState } from "react"; // useState → guarda estados como user y token
+import { AuthContext } from "./auth-context";
 
 // Proveedor del contexto | children -> componentes que estarán dentro de <AuthProvider>
-
 export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
@@ -19,4 +17,24 @@ export const AuthProvider = ({ children }) => {
         // Guarda el token en el navegador. Así, si recargas la página, no pierdes la sesión inmediatamente
         localStorage.setItem("token", token);
     };
+
+    const logout = () => {
+
+        // Borramos
+        setUser(null);
+        setToken(null);
+
+        localStorage.removeItem("token");
+    };
+
+    const isAuthenticated = !!token; // Convertimos el token en booleano. Si hay token → true y si no → false
+
+    // Compartimos los datos globalmente mediante el Provider y en value -> defines qué datos compartes globalmente. Cualquier componente podrá usarlos
+    return (
+        <AuthContext.Provider
+            value={{ user, token, login, logout, isAuthenticated }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
 };
