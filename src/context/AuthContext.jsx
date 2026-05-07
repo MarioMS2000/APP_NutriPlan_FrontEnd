@@ -1,12 +1,31 @@
 // Mete datos dentro del contexto
-import { useState } from "react"; // useState → guarda estados como user y token
+import { useEffect, useState } from "react"; // useState → guarda estados como user y token. useEffect → ejecutar código cuando cambie algo o cargue el componente
 import { AuthContext } from "./auth-context";
+import { getMe } from "../services/auth.service";
 
 // Proveedor del contexto | children -> componentes que estarán dentro de <AuthProvider>
 export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(localStorage.getItem("token")); // Intenta leer token guardado en localstorage, si existe lo carga y si no es null
+
+
+    // Se ejecuta cuando se monta el componente y cada vez que cambie token
+    useEffect(() => {
+        // Función async interna para cargar el usuario. No puedes poner directamente async en el callback de useEffect, por eso creas una función dentro
+        const loadUser = async () => {
+            if (!token) return;
+            
+            try {
+                const data = await getMe(token); // LLamo al backend con el token. El backend valida el token y devuelve el usuario
+
+                setUser(data.user); // Guardo el usuario en el contexto global. Así ProfilePage puede mostrarlo aunque recargues la página
+
+            } catch (error) {
+                
+            }
+        };
+    },[token]);
 
     const login = ({ user, token }) => {
 
