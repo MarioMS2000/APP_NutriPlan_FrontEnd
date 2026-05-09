@@ -1,0 +1,17 @@
+.recipe-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.recipe-card-content {
+    padding: 1rem;
+}
