@@ -1,0 +1,10 @@
+.recipes-page {
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.recipes-page h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}

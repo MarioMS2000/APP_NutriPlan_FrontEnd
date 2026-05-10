@@ -4,6 +4,8 @@ import { getRecipes } from "../services/recipe.service"; // Importa función que
 import RecipeFilters from "../components/RecipeFilters/RecipeFilters";
 import RecipeList from "../components/RecipeList/RecipeList";
 
+import "./RecipesPage.css";
+
 const RecipesPage = () => {
     const [recipes, setRecipes] = useState([]); // Estado para guardar recetas
     const [filters, setFilters] = useState({
@@ -47,7 +49,7 @@ const RecipesPage = () => {
     };
 
     return (
-        <main>
+        <main className="recipes-page">
             <h1>Recetas</h1>
 
             <RecipeFilters

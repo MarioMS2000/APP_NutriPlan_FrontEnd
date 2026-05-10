@@ -1,0 +1,16 @@
+.recipe-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .recipe-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .recipe-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

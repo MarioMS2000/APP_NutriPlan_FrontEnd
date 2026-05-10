@@ -1,10 +1,33 @@
 .recipe-detail {
-    padding: 1rem;
+    padding: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.recipe-detail h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .recipe-detail img {
     width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
+    max-height: 420px;
+    border-radius: 16px;
     object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.recipe-detail section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 14px;
+    background-color: #f7faf7;
+}
+
+.recipe-detail h2 {
+    margin-bottom: 0.75rem;
+}
+
+.recipe-detail li {
+    margin-bottom: 0.5rem;
 }

@@ -6,6 +6,7 @@ import RegisterPage from "./pages/RegisterPage";
 import RecipesPage from "./pages/RecipesPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import RecipeDetailPage from "./pages/RecipeDetailPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/recipes" element={<RecipesPage />} />
       <Route path="/profile" element={ <ProtectedRoute> <ProfilePage /> </ProtectedRoute> } />
+      <Route path="/recipes/:id" element={<RecipeDetailPage />} />
     </Routes>
   );
 }

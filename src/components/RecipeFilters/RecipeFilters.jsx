@@ -1,11 +1,12 @@
 // Formulario de filtros. Muestra inputs
+import "./RecipeFilters.css";
 const RecipeFilters = ({
     filters,
     handleChange,
     handleSubmit,
 }) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="recipe-filters" onSubmit={handleSubmit}>
             <input
                 type="text"
                 name="search"

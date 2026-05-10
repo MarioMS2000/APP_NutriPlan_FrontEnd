@@ -1,4 +1,5 @@
 // Representa UNA receta
+import { Link } from "react-router-dom";
 import "./RecipeCard.css";
 
 const RecipeCard = ({ recipe }) => {
@@ -16,6 +17,8 @@ const RecipeCard = ({ recipe }) => {
                 <p>💪 Dificultad: {recipe.difficulty}</p>
 
                 <p>🥗 Dieta: {recipe.dietType}</p>
+
+                <Link to={`/recipes/${recipe._id}`}>Ver detalle</Link> {/*Link viene de React Router y reemplaza al <a> tradicional en React */}
             </div>
         </article>
     );
