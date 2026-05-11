@@ -8,18 +8,22 @@ import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
 import FavoritesPage from "./pages/FavoritesPage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/recipes" element={<RecipesPage />} />
-      <Route path="/profile" element={ <ProtectedRoute> <ProfilePage /> </ProtectedRoute> } />
-      <Route path="/recipes/:id" element={<RecipeDetailPage />} />
-      <Route path="/favorites" element={<FavoritesPage />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/recipes" element={<RecipesPage />} />
+        <Route path="/profile" element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
+        <Route path="/recipes/:id" element={<RecipeDetailPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+      </Routes>
+    </>
   );
 }
 
