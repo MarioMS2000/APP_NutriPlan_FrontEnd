@@ -3,7 +3,7 @@ import { useAuth } from "../../context/useAuth"; // Hook personalizado para acce
 import "./Navbar.css";
 
 const Navbar = () => {
-    const { token, logout } = useAuth();
+    const { token, logout, user } = useAuth();
 
     return (
         <header className="navbar">
@@ -19,6 +19,10 @@ const Navbar = () => {
                         <Link to="/favorites">Favoritos</Link>
 
                         <Link to="/profile">Perfil</Link>
+
+                        {user?.role === "admin" && (
+                            <Link to="/admin">Admin</Link>
+                        )}
 
                         <Link to="/weekly-plan">Plan semanal</Link>
 

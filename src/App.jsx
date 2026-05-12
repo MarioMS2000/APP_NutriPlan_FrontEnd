@@ -10,6 +10,8 @@ import RecipeDetailPage from "./pages/RecipeDetailPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import Navbar from "./components/Navbar/Navbar";
 import WeeklyPlanPage from "./pages/WeeklyPlanPage";
+import AdminPage from "./pages/AdminPage";
+import AdminRoute from "./components/AdminRoute/AdminRoute";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path="/recipes/:id" element={<RecipeDetailPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/weekly-plan" element={<ProtectedRoute> <WeeklyPlanPage /> </ProtectedRoute>} />
+        <Route path="/admin" element={<AdminRoute> <AdminPage /> </AdminRoute>} />
       </Routes>
     </>
   );

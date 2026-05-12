@@ -49,16 +49,6 @@ const WeeklyPlanPage = () => {
     }, [token]);
 
     const handleRemove = async (planItemId) => {
-        try {
-            await removeRecipeFromWeeklyPlan(planItemId, token);
-
-            setPlan(plan.filter((item) => item.id !== planItemId)); 
-        } catch (error) {
-            alert("Error al eliminar receta del plan");
-        }
-    };
-
-    const handleRemove = async (planItemId) => {
         const confirmDelete = window.confirm(
             "¿Estás seguro de que quieres eliminar esta receta del plan semanal?"
         );
