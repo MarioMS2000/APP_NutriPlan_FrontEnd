@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom"; // Navegar entre páginas en React Router sin recargar la web
-import { useAuth } from "../../context/useAuth"; // Accede al estado global de autenticación
-
+import { Link } from "react-router-dom"; // Permite navegar entre rutas sin recargar toda la aplicación
+import { useAuth } from "../../context/useAuth"; // Hook personalizado para acceder al contexto de autenticación (token, user, logout, etc.)
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -20,6 +19,8 @@ const Navbar = () => {
                         <Link to="/favorites">Favoritos</Link>
 
                         <Link to="/profile">Perfil</Link>
+
+                        <Link to="/weekly-plan">Plan semanal</Link>
 
                         <button onClick={logout}>
                             Logout

@@ -9,6 +9,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import Navbar from "./components/Navbar/Navbar";
+import WeeklyPlanPage from "./pages/WeeklyPlanPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/profile" element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
         <Route path="/recipes/:id" element={<RecipeDetailPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/weekly-plan" element={<ProtectedRoute> <WeeklyPlanPage /> </ProtectedRoute>} />
       </Routes>
     </>
   );
