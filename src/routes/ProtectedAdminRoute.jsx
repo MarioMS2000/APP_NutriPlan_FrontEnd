@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../context/useAuth";
+import { useAuth } from "../context/useAuth";
 
 // children es lo que envuelves dentro. Sería el <AdminPage /> que esta dentro de AdminRoute en el App.jsx
-const AdminRoute = ({ children }) => {
+const ProtectedAdminRoute = ({ children }) => {
     const { token, user } = useAuth(); // user -> datos del usuario, incluido su role
 
     // Si no hay token logueate 
@@ -18,4 +18,4 @@ const AdminRoute = ({ children }) => {
     return children; // Si tiene token y además es admin, entonces deja ver la página protegida
 };
 
-export default AdminRoute;
+export default ProtectedAdminRoute;

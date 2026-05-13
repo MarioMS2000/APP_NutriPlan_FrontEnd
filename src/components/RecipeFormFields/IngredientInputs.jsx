@@ -3,13 +3,14 @@ const IngredientInputs = ({
     handleIngredientChange,
     addIngredient,
     removeIngredient,
+    rowClassName = "recipe-form-row-3",
 }) => {
     return (
         <section>
             <h3>Ingredientes</h3>
             {/*Recorre el array y crea inputs automáticamente */}
             {ingredients.map((ingredient, index) => (
-                <div key={index}>
+                <div className={rowClassName} key={index}>
                     <input
                         type="text"
                         name="name"

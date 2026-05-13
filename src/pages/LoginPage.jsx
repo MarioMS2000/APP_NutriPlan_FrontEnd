@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Para poder redirigir al usuario desde JavaScript
 import { loginUser } from "../services/auth.service"; // // Importo la función que llama al backend para registrar usuarios
 import { useAuth } from "../context/useAuth"; // Importas el hook de autenticación para acceder al contexto global
+
+import "./Auth.css";
 const LoginPage = () => {
 
     const navigate = useNavigate(); // Creo función navigate
@@ -41,38 +43,42 @@ const LoginPage = () => {
     };
 
     return (
-        <main>
-            <h1>Iniciar sesión</h1>
+        <main className="auth-page">
+            <section className="auth-card">
+                <h1>Iniciar sesión</h1>
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="email">Correo electrónico</label>
-                    <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="tu@email.com"
-                    />
-                </div>
+                <form className="auth-form" onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="email">Correo electrónico</label>
 
-                <div>
-                    <label htmlFor="password">Contraseña</label>
-                    <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder="Tu contraseña"
-                    />
-                </div>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="tu@email.com"
+                        />
+                    </div>
 
-                <button type="submit">Entrar</button>
-            </form>
+                    <div>
+                        <label htmlFor="password">Contraseña</label>
 
-            {error && <p>{error}</p>}
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="Tu contraseña"
+                        />
+                    </div>
+
+                    <button type="submit">Entrar</button>
+                </form>
+
+                {error && <p className="auth-error">{error}</p>}
+            </section>
         </main>
     );
 };

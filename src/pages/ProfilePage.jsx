@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Para poder redirigir al usuario desde JavaScript
 import { useAuth } from "../context/useAuth"; // Importas el hook de autenticación para acceder al contexto global
 import { createNutritionProfile, getMyNutritionProfile, updateNutritionProfile } from "../services/nutritionProfile.service";
+
+import "./ProfilePage.css";
 const ProfilePage = () => {
 
     const navigate = useNavigate(); // Creo función navigate
@@ -95,132 +97,141 @@ const ProfilePage = () => {
     };
 
     return (
-        <main>
-            <h1>Perfil</h1>
+        <main className="profile-page">
+            <section className="profile-card">
+                <h1>Perfil</h1>
+                
+                {/* user && -> si existe user, muestra lo de dentro. Si es null no muestres su contenido */}
+                {user && (
+                    <section className="profile-user-info">
+                        <p>Nombre: {user.name}</p>
+                        <p>Email: {user.email}</p>
+                        <p>Rol: {user.role}</p>
+                    </section>
+                )}
 
-            {/* user && -> si existe user, muestra lo de dentro. Si es null no muestres su contenido */}
-            {user && (
-                <section>
-                    <p>Nombre: {user.name}</p>
-                    <p>Email: {user.email}</p>
-                    <p>Rol: {user.role}</p>
-                </section>
-            )}
+                <h2>Perfil nutricional</h2>
 
-            <h2>Perfil nutricional</h2>
+                <form className="profile-form" onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="age">Edad</label>
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="age">Edad</label>
-                    <input
-                        id="age"
-                        type="number"
-                        name="age"
-                        value={formData.age}
-                        onChange={handleChange}
-                    />
-                </div>
+                        <input
+                            id="age"
+                            type="number"
+                            name="age"
+                            value={formData.age}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div>
-                    <label htmlFor="height">Altura en metros</label>
-                    <input
-                        id="height"
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        name="height"
-                        value={formData.height}
-                        onChange={handleChange}
-                        placeholder="Ej: 1,80"
-                    />
-                    
-                    <span>m</span>
-                </div>
+                    <div>
+                        <label htmlFor="height">Altura en metros</label>
 
-                <div>
-                    <label htmlFor="weight">Peso en kg</label>
-                    <input
-                        id="weight"
-                        type="number"
-                        step="0.1"
-                        min="0"
-                        name="weight"
-                        value={formData.weight}
-                        onChange={handleChange}
-                        placeholder="Ej: 72,5"
-                    />
+                        <input
+                            id="height"
+                            type="number"
+                            step="0.01"
+                            min="0"
+                            name="height"
+                            value={formData.height}
+                            onChange={handleChange}
+                            placeholder="Ej: 1,80"
+                        />
+                    </div>
 
-                    <span>kg</span>
-                </div>
+                    <div>
+                        <label htmlFor="weight">Peso en kg</label>
 
-                <div>
-                    <label htmlFor="goal">Objetivo</label>
-                    <select
-                        id="goal"
-                        name="goal"
-                        value={formData.goal}
-                        onChange={handleChange}
-                    >
-                        <option value="lose_weight">Perder peso</option>
-                        <option value="maintain_weight">Mantener peso</option>
-                        <option value="gain_muscle">Ganar músculo</option>
-                    </select>
-                </div>
+                        <input
+                            id="weight"
+                            type="number"
+                            step="0.1"
+                            min="0"
+                            name="weight"
+                            value={formData.weight}
+                            onChange={handleChange}
+                            placeholder="Ej: 72,5"
+                        />
+                    </div>
 
-                <div>
-                    <label htmlFor="activityLevel">Nivel de actividad</label>
-                    <select
-                        id="activityLevel"
-                        name="activityLevel"
-                        value={formData.activityLevel}
-                        onChange={handleChange}
-                    >
-                        <option value="low">Bajo</option>
-                        <option value="medium">Medio</option>
-                        <option value="high">Alto</option>
-                    </select>
-                </div>
+                    <div>
+                        <label htmlFor="goal">Objetivo</label>
 
-                <div>
-                    <label htmlFor="dietType">Tipo de dieta</label>
-                    <select
-                        id="dietType"
-                        name="dietType"
-                        value={formData.dietType}
-                        onChange={handleChange}
-                    >
-                        <option value="standard">Estándar</option>
-                        <option value="vegetarian">Vegetariana</option>
-                        <option value="vegan">Vegana</option>
-                        <option value="gluten_free">Sin gluten</option>
-                    </select>
-                </div>
+                        <select
+                            id="goal"
+                            name="goal"
+                            value={formData.goal}
+                            onChange={handleChange}
+                        >
+                            <option value="lose_weight">Perder peso</option>
+                            <option value="maintain_weight">Mantener peso</option>
+                            <option value="gain_muscle">Ganar músculo</option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label htmlFor="allergies">Alergias</label>
-                    <input
-                        id="allergies"
-                        type="text"
-                        name="allergies"
-                        value={formData.allergies}
-                        onChange={handleChange}
-                        placeholder="Ej: lactosa, frutos secos..."
-                    />
-                </div>
+                    <div>
+                        <label htmlFor="activityLevel">
+                            Nivel de actividad
+                        </label>
 
-                <button type="submit">
+                        <select
+                            id="activityLevel"
+                            name="activityLevel"
+                            value={formData.activityLevel}
+                            onChange={handleChange}
+                        >
+                            <option value="low">Bajo</option>
+                            <option value="medium">Medio</option>
+                            <option value="high">Alto</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label htmlFor="dietType">Tipo de dieta</label>
+
+                        <select
+                            id="dietType"
+                            name="dietType"
+                            value={formData.dietType}
+                            onChange={handleChange}
+                        >
+                            <option value="standard">Estándar</option>
+                            <option value="vegetarian">Vegetariana</option>
+                            <option value="vegan">Vegana</option>
+                            <option value="gluten_free">Sin gluten</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label htmlFor="allergies">Alergias</label>
+
+                        <input
+                            id="allergies"
+                            type="text"
+                            name="allergies"
+                            value={formData.allergies}
+                            onChange={handleChange}
+                            placeholder="Ej: lactosa, frutos secos..."
+                        />
+                    </div>
+
                     {/* Si existe perfil Actualizar perfil si no  Crear perfil*/}
-                    {profile ? "Actualizar perfil" : "Crear perfil"}
+                    <button type="submit">
+                        {profile ? "Actualizar perfil" : "Crear perfil"}
+                    </button>
+                </form>
+
+                {message && (<p className="profile-message">{message}</p>)}
+
+                {error && (<p className="profile-error">{error}</p>)}
+
+                <button className="logout-button" onClick={handleLogout}>
+                    Cerrar sesión
                 </button>
-            </form>
-
-            {message && <p>{message}</p>}
-            {error && <p>{error}</p>}
-
-            <button onClick={handleLogout}>Cerrar sesión</button>
+            </section>
         </main>
     );
-
 };
 
 export default ProfilePage; // Exportamos para poder usarla en App.jsx

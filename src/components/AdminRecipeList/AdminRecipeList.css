@@ -1,0 +1,57 @@
+.admin-recipe-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.admin-recipe-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    background-color: #fafafa;
+}
+
+.admin-recipe-info h3 {
+    margin: 0 0 0.4rem;
+}
+
+.admin-recipe-info p {
+    margin: 0;
+    color: #666;
+}
+
+.admin-recipe-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.admin-edit-link,
+.admin-delete-button {
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.admin-edit-link {
+    background-color: #2563eb;
+    color: white;
+}
+
+.admin-delete-button {
+    background-color: #dc2626;
+    color: white;
+}
+
+.admin-edit-link:hover {
+    background-color: #1d4ed8;
+}
+
+.admin-delete-button:hover {
+    background-color: #b91c1c;
+}

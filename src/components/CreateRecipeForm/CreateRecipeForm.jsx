@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useAuth } from "../../context/useAuth";
 import api from "../../services/api";
 
-import IngredientInputs from "./IngredientInputs";
-import StepInputs from "./StepInputs";
+import IngredientInputs from "../RecipeFormFields/IngredientInputs";
+import StepInputs from "../RecipeFormFields/StepInputs";
+
+import "./CreateRecipeForm.css";
 
 const CreateRecipeForm = () => {
     const { token } = useAuth();
@@ -145,14 +147,24 @@ const CreateRecipeForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="title"
-                placeholder="Título"
-                value={formData.title}
-                onChange={handleChange}
-            />
+        <form className="recipe-form" onSubmit={handleSubmit}>
+            <div className="recipe-form-row">
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Título"
+                    value={formData.title}
+                    onChange={handleChange}
+                />
+
+                <input
+                    type="text"
+                    name="image"
+                    placeholder="URL imagen"
+                    value={formData.image}
+                    onChange={handleChange}
+                />
+            </div>
 
             <textarea
                 name="description"
@@ -161,66 +173,64 @@ const CreateRecipeForm = () => {
                 onChange={handleChange}
             />
 
-            <input
-                type="text"
-                name="image"
-                placeholder="URL imagen"
-                value={formData.image}
-                onChange={handleChange}
-            />
+            <div className="recipe-form-row">
+                <input
+                    type="number"
+                    name="prepTime"
+                    placeholder="Tiempo preparación"
+                    value={formData.prepTime}
+                    onChange={handleChange}
+                />
 
-            <input
-                type="number"
-                name="prepTime"
-                placeholder="Tiempo preparación"
-                value={formData.prepTime}
-                onChange={handleChange}
-            />
+                <input
+                    type="number"
+                    name="calories"
+                    placeholder="Calorías"
+                    value={formData.calories}
+                    onChange={handleChange}
+                />
+            </div>
 
-            <select
-                name="difficulty"
-                value={formData.difficulty}
-                onChange={handleChange}
-            >
-                <option value="easy">Fácil</option>
-                <option value="medium">Media</option>
-                <option value="hard">Difícil</option>
-            </select>
+            <div className="recipe-form-row">
+                <select
+                    name="difficulty"
+                    value={formData.difficulty}
+                    onChange={handleChange}
+                >
+                    <option value="easy">Fácil</option>
+                    <option value="medium">Media</option>
+                    <option value="hard">Difícil</option>
+                </select>
 
-            <select
-                name="dietType"
-                value={formData.dietType}
-                onChange={handleChange}
-            >
-                <option value="standard">Estándar</option>
-                <option value="vegetarian">Vegetariana</option>
-                <option value="vegan">Vegana</option>
-                <option value="gluten_free">Sin gluten</option>
-            </select>
+                <select
+                    name="dietType"
+                    value={formData.dietType}
+                    onChange={handleChange}
+                >
+                    <option value="standard">Estándar</option>
+                    <option value="vegetarian">Vegetariana</option>
+                    <option value="vegan">Vegana</option>
+                    <option value="gluten_free">Sin gluten</option>
+                </select>
+            </div>
 
-            <input
-                type="number"
-                name="calories"
-                placeholder="Calorías"
-                value={formData.calories}
-                onChange={handleChange}
-            />
+            <div className="recipe-form-row">
+                <input
+                    type="number"
+                    name="protein"
+                    placeholder="Proteína"
+                    value={formData.protein}
+                    onChange={handleChange}
+                />
 
-            <input
-                type="number"
-                name="protein"
-                placeholder="Proteína"
-                value={formData.protein}
-                onChange={handleChange}
-            />
-
-            <input
-                type="number"
-                name="carbs"
-                placeholder="Carbohidratos"
-                value={formData.carbs}
-                onChange={handleChange}
-            />
+                <input
+                    type="number"
+                    name="carbs"
+                    placeholder="Carbohidratos"
+                    value={formData.carbs}
+                    onChange={handleChange}
+                />
+            </div>
 
             <input
                 type="number"

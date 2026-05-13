@@ -18,3 +18,25 @@ export const getRecipeById = async (id) => {
 
     return response.data;
 };
+
+// Borrar receta
+export const deleteRecipe = async (recipeId, token) => {
+    const response = await api.delete(`/recipes/${recipeId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return response.data;
+};
+
+// Editar una receta
+export const updateRecipe = async (recipeId, recipeData, token) => {
+    const response = await api.put(`/recipes/${recipeId}`, recipeData, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return response.data;
+};

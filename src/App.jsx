@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"; // cuando la URL sea X, muestra este componente
+import { Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -11,25 +11,72 @@ import FavoritesPage from "./pages/FavoritesPage";
 import Navbar from "./components/Navbar/Navbar";
 import WeeklyPlanPage from "./pages/WeeklyPlanPage";
 import AdminPage from "./pages/AdminPage";
-import AdminRoute from "./components/AdminRoute/AdminRoute";
+import EditRecipePage from "./pages/EditRecipePage";
+import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/recipes" element={<RecipesPage />} />
-        <Route path="/profile" element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
-        <Route path="/recipes/:id" element={<RecipeDetailPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/weekly-plan" element={<ProtectedRoute> <WeeklyPlanPage /> </ProtectedRoute>} />
-        <Route path="/admin" element={<AdminRoute> <AdminPage /> </AdminRoute>} />
-      </Routes>
-    </>
-  );
+    return (
+        <>
+            <Navbar />
+
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+
+                <Route path="/login" element={<LoginPage />} />
+
+                <Route path="/register" element={<RegisterPage />} />
+
+                <Route path="/recipes" element={<RecipesPage />} />
+
+                <Route
+                    path="/profile"
+                    element={
+                        <ProtectedRoute>
+                            <ProfilePage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route path="/recipes/:id" element={<RecipeDetailPage />} />
+
+                <Route
+                    path="/favorites"
+                    element={
+                        <ProtectedRoute>
+                            <FavoritesPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/weekly-plan"
+                    element={
+                        <ProtectedRoute>
+                            <WeeklyPlanPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/admin"
+                    element={
+                        <ProtectedAdminRoute>
+                            <AdminPage />
+                        </ProtectedAdminRoute>
+                    }
+                />
+
+                <Route
+                    path="/admin/recipes/edit/:recipeId"
+                    element={
+                        <ProtectedAdminRoute>
+                            <EditRecipePage />
+                        </ProtectedAdminRoute>
+                    }
+                />
+            </Routes>
+        </>
+    );
 }
 
 export default App;

@@ -3,13 +3,14 @@ const StepInputs = ({
     handleStepChange,
     addStep,
     removeStep,
+    rowClassName = "recipe-form-row",
 }) => {
     return (
         <section>
             <h3>Pasos</h3>
             {/* placeholder={`Paso ${index + 1}`} -> Recorre los pasos y pinta un input por cada paso. Paso 1 Paso 2 Paso 3 */}
             {steps.map((step, index) => (
-                <div key={index}>
+                <div className={rowClassName} key={index}>
                     <input
                         type="text"
                         placeholder={`Paso ${index + 1}`}

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Para poder redirigir al usuario desde JavaScript
 import { registerUser } from "../services/auth.service"; // Importo la función que llama al backend para registrar usuarios
+
+import "./Auth.css";
+
 const RegisterPage = () => {
 
     const navigate = useNavigate(); // Creo función navigate
@@ -42,51 +45,58 @@ const RegisterPage = () => {
     };
 
     return (
-        <main>
-            <h1>Crear cuenta</h1>
+        <main className="auth-page">
+            <section className="auth-card">
+                <h1>Crear cuenta</h1>
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    {/* htmlFor -> para conectar un <label> con un <input> */}
-                    <label htmlFor="name">Nombre</label>
-                    <input
-                        id="name"
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Tu nombre"
-                    />
-                </div>
+                <form className="auth-form" onSubmit={handleSubmit}>
+                    <div>
+                        {/* htmlFor -> para conectar un <label> con un <input> */}
+                        <label htmlFor="name">Nombre</label>
 
-                <div>
-                    <label htmlFor="email">Correo electrónico</label>
-                    <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="tu@email.com"
-                    />
-                </div>
+                        <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Tu nombre"
+                        />
+                    </div>
 
-                <div>
-                    <label htmlFor="password">Contraseña</label>
-                    <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder="Mínimo 6 caracteres"
-                    />
-                </div>
+                    <div>
+                        <label htmlFor="email">Correo electrónico</label>
 
-                <button type="submit">Registrarme</button>
-            </form>
-            {success && <p>{success}</p>}{/*Si hay mensaje de éxito, lo muestra. Si success está vacío, no muestra nada */}
-            {error && <p>{error}</p>}
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="tu@email.com"
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="password">Contraseña</label>
+
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="Mínimo 6 caracteres"
+                        />
+                    </div>
+
+                    <button type="submit">Registrarme</button>
+                </form>
+
+                {success && (<p className="auth-success">{success}</p>)} {/*Si hay mensaje de éxito, lo muestra. Si success está vacío, no muestra nada */}
+
+                {error && (<p className="auth-error">{error}</p>)}
+            </section>
         </main>
     );
 };
